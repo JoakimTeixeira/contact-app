@@ -30,13 +30,13 @@ const Contacts = ({ contacts, handleDeleteButton, handleEditButton }) => {
 														onClick={() => handleDeleteButton(id)}
 														className="btn btn-danger m-1"
 													>
-														Delete
+														<i class="fas fa-trash-alt"></i>
 													</button>
 													<button
 														onClick={() => handleEditButton(id)}
 														className="btn btn-dark m-1"
 													>
-														Edit
+														<i class="fas fa-edit"></i>
 													</button>
 												</td>
 											</tr>
