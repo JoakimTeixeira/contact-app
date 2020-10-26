@@ -13,6 +13,11 @@ const App = () => {
 	const submitButton = useRef(null)
 	const cachedId = useRef(null)
 
+	const capitalize = (string) => {
+		const newString = string.charAt(0).toUpperCase() + string.slice(1)
+		return newString
+	}
+
 	const handleFirstNameInput = (event) => {
 		setFirstName(event.target.value)
 	}
@@ -28,9 +33,17 @@ const App = () => {
 	const handleFormSubmit = (event) => {
 		event.preventDefault()
 
+		const capitalizedFirstName = capitalize(firstName)
+		const capitalizedLastName = capitalize(lastName)
+
 		if (firstName && lastName && email) {
 			if (edit) {
-				const newPerson = { id: cachedId.current, firstName, lastName, email }
+				const newPerson = {
+					id: cachedId.current,
+					firstName: capitalizedFirstName,
+					lastName: capitalizedLastName,
+					email,
+				}
 				const newContacts = [...contacts]
 				const index = contacts.findIndex(
 					(contact) => contact.id === cachedId.current
@@ -50,8 +63,8 @@ const App = () => {
 			} else if (edit === false) {
 				const person = {
 					id: new Date().getTime().toString(),
-					firstName,
-					lastName,
+					firstName: capitalizedFirstName,
+					lastName: capitalizedLastName,
 					email,
 				}
 
