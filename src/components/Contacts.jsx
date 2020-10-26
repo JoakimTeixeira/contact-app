@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Contacts = ({ contacts, handleDeleteButton }) => {
+const Contacts = ({ contacts, handleDeleteButton, handleEditButton }) => {
 	return (
 		<article className="row">
 			<table className="table table-bordered table-striped table-responsive-sm bg-white mb-5">
@@ -28,9 +28,15 @@ const Contacts = ({ contacts, handleDeleteButton }) => {
 												<td>
 													<button
 														onClick={() => handleDeleteButton(id)}
-														className="btn btn-danger mr-2"
+														className="btn btn-danger m-1"
 													>
 														Delete
+													</button>
+													<button
+														onClick={() => handleEditButton(id)}
+														className="btn btn-dark m-1"
+													>
+														Edit
 													</button>
 												</td>
 											</tr>

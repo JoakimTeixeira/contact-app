@@ -8,7 +8,10 @@ const App = () => {
 	const [lastName, setLastName] = useState('')
 	const [email, setEmail] = useState('')
 	const [contacts, setContacts] = useState([])
-	const inputFocus = useRef()
+	const [edit, setEdit] = useState(false)
+	const inputFocus = useRef(null)
+	const submitButton = useRef(null)
+	const cachedId = useRef(null)
 
 	const handleFirstNameInput = (event) => {
 		setFirstName(event.target.value)
@@ -25,27 +28,58 @@ const App = () => {
 	const handleFormSubmit = (event) => {
 		event.preventDefault()
 
-		if ((firstName, lastName, email)) {
-			const person = {
-				id: new Date().getTime().toString(),
-				firstName,
-				lastName,
-				email,
+		if (edit) {
+			if ((firstName, lastName, email)) {
+				const newPerson = { id: cachedId.current, firstName, lastName, email }
+				const newContacts = [...contacts]
+				const index = contacts.findIndex(
+					(contact) => contact.id === cachedId.current
+				)
+
+				newContacts[index] = newPerson
+				setContacts(newContacts)
 			}
 
-			setContacts((contacts) => {
-				return [...contacts, person]
-			})
-
+			submitButton.current.innerText = 'Add contact'
+			cachedId.current = null
+			setEdit(false)
 			setFirstName('')
 			setLastName('')
 			setEmail('')
+		} else if (edit === false) {
+			if ((firstName, lastName, email)) {
+				const person = {
+					id: new Date().getTime().toString(),
+					firstName,
+					lastName,
+					email,
+				}
+
+				setContacts((contacts) => {
+					return [...contacts, person]
+				})
+
+				setFirstName('')
+				setLastName('')
+				setEmail('')
+			}
 		}
 	}
 
 	const handleDeleteButton = (id) => {
 		const newContacts = contacts.filter((contact) => contact.id !== id)
 		setContacts(newContacts)
+	}
+
+	const handleEditButton = (id) => {
+		const person = contacts.find((contact) => contact.id === id)
+		setFirstName(person.firstName)
+		setLastName(person.lastName)
+		setEmail(person.email)
+		setEdit(true)
+		cachedId.current = id
+
+		submitButton.current.innerText = 'Edit contact'
 	}
 
 	useEffect(() => {
@@ -115,7 +149,11 @@ const App = () => {
 							</div>
 
 							<div className="form-group row">
-								<button type="submit" className="col-12 btn btn-danger">
+								<button
+									ref={submitButton}
+									type="submit"
+									className="col-12 btn btn-danger"
+								>
 									Add contact
 								</button>
 							</div>
@@ -125,6 +163,7 @@ const App = () => {
 					<Contacts
 						contacts={contacts}
 						handleDeleteButton={handleDeleteButton}
+						handleEditButton={handleEditButton}
 					/>
 				</section>
 
