@@ -26,7 +26,12 @@ const App = () => {
 		event.preventDefault()
 
 		if ((firstName, lastName, email)) {
-			const person = { firstName, lastName, email }
+			const person = {
+				id: new Date().getTime().toString(),
+				firstName,
+				lastName,
+				email,
+			}
 
 			setContacts((contacts) => {
 				return [...contacts, person]
@@ -36,6 +41,11 @@ const App = () => {
 			setLastName('')
 			setEmail('')
 		}
+	}
+
+	const handleDeleteButton = (id) => {
+		const newContacts = contacts.filter((contact) => contact.id !== id)
+		setContacts(newContacts)
 	}
 
 	useEffect(() => {
@@ -112,7 +122,10 @@ const App = () => {
 						</form>
 					</article>
 
-					<Contacts contacts={contacts} />
+					<Contacts
+						contacts={contacts}
+						handleDeleteButton={handleDeleteButton}
+					/>
 				</section>
 
 				<section>
