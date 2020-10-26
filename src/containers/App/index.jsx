@@ -1,8 +1,57 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './index.css'
 import meteor from '../../resources/meteor.svg'
 
 const App = () => {
+	const [name, setName] = useState('')
+	const [email, setEmail] = useState('')
+	const [users, setUsers] = useState([])
+
+	const handleNameInput = (event) => {
+		setName(event.target.value)
+	}
+
+	const handleEmailInput = (event) => {
+		setEmail(event.target.value)
+	}
+
+	const handleFormSubmit = (event) => {
+		event.preventDefault()
+
+		if ((name, email)) {
+			const person = { name, email }
+
+			setUsers((users) => {
+				return [...users, person]
+			})
+
+			setName('')
+			setEmail('')
+		}
+	}
+
+	const renderUsersTable = () => {
+		if (users.length > 0) {
+			return (
+				<>
+					<th>Name</th>
+					<th>Email</th>
+					{users &&
+						users.map((user) => {
+							const { name, email } = user
+
+							return (
+								<tr>
+									<td>{name}</td>
+									<td>{email}</td>
+								</tr>
+							)
+						})}
+				</>
+			)
+		}
+	}
+
 	return (
 		<>
 			<div className="p-5">
@@ -12,7 +61,7 @@ const App = () => {
 					</header>
 
 					<article className="pb-5">
-						<form>
+						<form onSubmit={handleFormSubmit}>
 							<div className="form-group row">
 								<label
 									htmlFor="inputName"
@@ -25,6 +74,8 @@ const App = () => {
 									type="text"
 									id="inputName"
 									placeholder="John Doe"
+									value={name}
+									onChange={handleNameInput}
 								/>
 							</div>
 
@@ -40,6 +91,8 @@ const App = () => {
 									type="email"
 									id="inputEmail"
 									placeholder="johndoe@email.com"
+									value={email}
+									onChange={handleEmailInput}
 								/>
 							</div>
 
@@ -52,12 +105,8 @@ const App = () => {
 					</article>
 
 					<article className="row">
-						<table className="table table-bordered bg-white mb-5">
-							<tbody>
-								<tr>
-									<td>test</td>
-								</tr>
-							</tbody>
+						<table className="table table-bordered table-striped bg-white mb-5">
+							<tbody>{renderUsersTable()}</tbody>
 						</table>
 					</article>
 				</section>
