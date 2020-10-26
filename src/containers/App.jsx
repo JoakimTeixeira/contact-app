@@ -65,12 +65,12 @@ const App = () => {
 							<div className="form-group row">
 								<label
 									htmlFor="inputFirstName"
-									className="text-white col-3 col-form-label"
+									className="text-white col-sm-3 col-form-label"
 								>
 									First Name:
 								</label>
 								<input
-									className="form-control col-9"
+									className="form-control col-sm-9"
 									type="text"
 									id="inputFirstName"
 									placeholder="John"
@@ -83,12 +83,12 @@ const App = () => {
 							<div className="form-group row">
 								<label
 									htmlFor="inputLastName"
-									className="text-white col-3 col-form-label"
+									className="text-white col-sm-3 col-form-label"
 								>
 									Last Name:
 								</label>
 								<input
-									className="form-control col-9"
+									className="form-control col-sm-9"
 									type="text"
 									id="inputLastName"
 									placeholder="Doe"
@@ -100,12 +100,12 @@ const App = () => {
 							<div className="form-group row">
 								<label
 									htmlFor="inputEmail"
-									className="text-white col-3 col-form-label"
+									className="text-white col-sm-3 col-form-label"
 								>
 									Email:
 								</label>
 								<input
-									className="form-control col-9"
+									className="form-control col-sm-9"
 									type="email"
 									id="inputEmail"
 									placeholder="johndoe@email.com"
