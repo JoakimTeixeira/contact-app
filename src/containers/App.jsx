@@ -41,6 +41,8 @@ const App = () => {
 			}
 
 			submitButton.current.innerText = 'Add contact'
+			submitButton.current.classList.remove('btn-dark')
+			submitButton.current.classList.add('btn-danger')
 			cachedId.current = null
 			setEdit(false)
 			setFirstName('')
@@ -80,6 +82,8 @@ const App = () => {
 		cachedId.current = id
 
 		submitButton.current.innerText = 'Edit contact'
+		submitButton.current.classList.remove('btn-danger')
+		submitButton.current.classList.add('btn-dark')
 	}
 
 	useEffect(() => {
