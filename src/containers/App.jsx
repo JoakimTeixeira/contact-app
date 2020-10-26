@@ -28,8 +28,8 @@ const App = () => {
 	const handleFormSubmit = (event) => {
 		event.preventDefault()
 
-		if (edit) {
-			if ((firstName, lastName, email)) {
+		if (firstName && lastName && email) {
+			if (edit) {
 				const newPerson = { id: cachedId.current, firstName, lastName, email }
 				const newContacts = [...contacts]
 				const index = contacts.findIndex(
@@ -38,18 +38,16 @@ const App = () => {
 
 				newContacts[index] = newPerson
 				setContacts(newContacts)
-			}
 
-			submitButton.current.innerText = 'Add contact'
-			submitButton.current.classList.remove('btn-dark')
-			submitButton.current.classList.add('btn-danger')
-			cachedId.current = null
-			setEdit(false)
-			setFirstName('')
-			setLastName('')
-			setEmail('')
-		} else if (edit === false) {
-			if ((firstName, lastName, email)) {
+				submitButton.current.innerText = 'Add contact'
+				submitButton.current.classList.remove('btn-dark')
+				submitButton.current.classList.add('btn-danger')
+				cachedId.current = null
+				setEdit(false)
+				setFirstName('')
+				setLastName('')
+				setEmail('')
+			} else if (edit === false) {
 				const person = {
 					id: new Date().getTime().toString(),
 					firstName,
