@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './index.css'
 import meteor from '../../resources/meteor.svg'
 
@@ -6,6 +6,7 @@ const App = () => {
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [users, setUsers] = useState([])
+	const inputFocus = useRef()
 
 	const handleNameInput = (event) => {
 		setName(event.target.value)
@@ -29,6 +30,10 @@ const App = () => {
 			setEmail('')
 		}
 	}
+
+	useEffect(() => {
+		inputFocus.current.focus()
+	}, [users])
 
 	const renderUsersTable = () => {
 		if (users.length > 0) {
@@ -74,6 +79,7 @@ const App = () => {
 									type="text"
 									id="inputName"
 									placeholder="John Doe"
+									ref={inputFocus}
 									value={name}
 									onChange={handleNameInput}
 								/>
