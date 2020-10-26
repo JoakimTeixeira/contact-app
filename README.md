@@ -1,8 +1,8 @@
 # Contact App
 
-Project made to test React hooks
+Simple CRUD with React and hooks.
 
-![image](https://user-images.githubusercontent.com/12193814/97157483-e9ad3100-1756-11eb-9b11-5ade9749b514.png)
+![image](https://user-images.githubusercontent.com/12193814/97182717-a44f2a80-177b-11eb-8beb-558c380475a0.png)
 
 ## Running the Project
 
