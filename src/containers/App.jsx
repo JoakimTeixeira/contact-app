@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
-import './index.css'
-import meteor from '../../resources/meteor.svg'
+import './App.css'
+import meteor from '../resources/meteor.svg'
+import Contacts from '../components/Contacts'
 
 const App = () => {
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
-	const [users, setUsers] = useState([])
+	const [contacts, setContacts] = useState([])
 	const inputFocus = useRef()
 
 	const handleNameInput = (event) => {
@@ -22,8 +23,8 @@ const App = () => {
 		if ((name, email)) {
 			const person = { name, email }
 
-			setUsers((users) => {
-				return [...users, person]
+			setContacts((contacts) => {
+				return [...contacts, person]
 			})
 
 			setName('')
@@ -33,29 +34,7 @@ const App = () => {
 
 	useEffect(() => {
 		inputFocus.current.focus()
-	}, [users])
-
-	const renderUsersTable = () => {
-		if (users.length > 0) {
-			return (
-				<>
-					<th>Name</th>
-					<th>Email</th>
-					{users &&
-						users.map((user) => {
-							const { name, email } = user
-
-							return (
-								<tr>
-									<td>{name}</td>
-									<td>{email}</td>
-								</tr>
-							)
-						})}
-				</>
-			)
-		}
-	}
+	}, [contacts])
 
 	return (
 		<>
@@ -110,11 +89,7 @@ const App = () => {
 						</form>
 					</article>
 
-					<article className="row">
-						<table className="table table-bordered table-striped bg-white mb-5">
-							<tbody>{renderUsersTable()}</tbody>
-						</table>
-					</article>
+					<Contacts contacts={contacts} />
 				</section>
 
 				<section>
