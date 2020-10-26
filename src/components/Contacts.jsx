@@ -1,19 +1,21 @@
 import React from 'react'
 
 const Contacts = ({ contacts }) => {
-	const renderContactsTable = () => {
+	const renderContacts = () => {
 		if (contacts.length > 0) {
 			return (
 				<>
-					<th>Name</th>
-					<th>Email</th>
+					<th scope="col">First Name</th>
+					<th scope="col">Last Name</th>
+					<th scope="col">Email</th>
 					{contacts &&
 						contacts.map((person) => {
-							const { name, email } = person
+							const { firstName, lastName, email } = person
 
 							return (
 								<tr>
-									<td>{name}</td>
+									<td>{firstName}</td>
+									<td>{lastName}</td>
 									<td>{email}</td>
 								</tr>
 							)
@@ -26,7 +28,7 @@ const Contacts = ({ contacts }) => {
 	return (
 		<article className="row">
 			<table className="table table-bordered table-striped bg-white mb-5">
-				<tbody>{renderContactsTable()}</tbody>
+				<tbody>{renderContacts()}</tbody>
 			</table>
 		</article>
 	)

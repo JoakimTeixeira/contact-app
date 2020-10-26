@@ -4,13 +4,18 @@ import meteor from '../resources/meteor.svg'
 import Contacts from '../components/Contacts'
 
 const App = () => {
-	const [name, setName] = useState('')
+	const [firstName, setFirstName] = useState('')
+	const [lastName, setLastName] = useState('')
 	const [email, setEmail] = useState('')
 	const [contacts, setContacts] = useState([])
 	const inputFocus = useRef()
 
-	const handleNameInput = (event) => {
-		setName(event.target.value)
+	const handleFirstNameInput = (event) => {
+		setFirstName(event.target.value)
+	}
+
+	const handleLastNameInput = (event) => {
+		setLastName(event.target.value)
 	}
 
 	const handleEmailInput = (event) => {
@@ -20,14 +25,15 @@ const App = () => {
 	const handleFormSubmit = (event) => {
 		event.preventDefault()
 
-		if ((name, email)) {
-			const person = { name, email }
+		if ((firstName, lastName, email)) {
+			const person = { firstName, lastName, email }
 
 			setContacts((contacts) => {
 				return [...contacts, person]
 			})
 
-			setName('')
+			setFirstName('')
+			setLastName('')
 			setEmail('')
 		}
 	}
@@ -48,31 +54,48 @@ const App = () => {
 						<form onSubmit={handleFormSubmit}>
 							<div className="form-group row">
 								<label
-									htmlFor="inputName"
-									className="text-white col-sm-2 col-form-label"
+									htmlFor="inputFirstName"
+									className="text-white col-3 col-form-label"
 								>
-									Name:
+									First Name:
 								</label>
 								<input
-									className="form-control col-sm-10"
+									className="form-control col-9"
 									type="text"
-									id="inputName"
-									placeholder="John Doe"
+									id="inputFirstName"
+									placeholder="John"
 									ref={inputFocus}
-									value={name}
-									onChange={handleNameInput}
+									value={firstName}
+									onChange={handleFirstNameInput}
+								/>
+							</div>
+
+							<div className="form-group row">
+								<label
+									htmlFor="inputLastName"
+									className="text-white col-3 col-form-label"
+								>
+									Last Name:
+								</label>
+								<input
+									className="form-control col-9"
+									type="text"
+									id="inputLastName"
+									placeholder="Doe"
+									value={lastName}
+									onChange={handleLastNameInput}
 								/>
 							</div>
 
 							<div className="form-group row">
 								<label
 									htmlFor="inputEmail"
-									className="text-white col-sm-2 col-form-label"
+									className="text-white col-3 col-form-label"
 								>
 									Email:
 								</label>
 								<input
-									className="form-control col-sm-10"
+									className="form-control col-9"
 									type="email"
 									id="inputEmail"
 									placeholder="johndoe@email.com"
@@ -82,7 +105,7 @@ const App = () => {
 							</div>
 
 							<div className="form-group row">
-								<button type="submit" className="col-sm-12 btn btn-danger">
+								<button type="submit" className="col-12 btn btn-danger">
 									Add contact
 								</button>
 							</div>
