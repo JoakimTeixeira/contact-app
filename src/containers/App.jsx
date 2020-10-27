@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import './App.css'
 import meteor from '../resources/meteor.svg'
 import Contacts from '../components/Contacts'
+import SearchBar from '../components/SearchBar'
 
 const App = () => {
 	const [firstName, setFirstName] = useState('')
@@ -9,13 +10,37 @@ const App = () => {
 	const [email, setEmail] = useState('')
 	const [contacts, setContacts] = useState([])
 	const [edit, setEdit] = useState(false)
+	const [searchQuery, setSearchQuery] = useState('')
 	const inputFocus = useRef(null)
-	const submitButton = useRef(null)
+	const formSubmitButton = useRef(null)
+	const searchBar = useRef(null)
 	const cachedId = useRef(null)
 
 	const capitalize = (string) => {
 		const newString = string.charAt(0).toUpperCase() + string.slice(1)
 		return newString
+	}
+
+	const handleSearchSubmit = (event) => {
+		event.preventDefault()
+		if (!searchBar.current.value) {
+			searchBar.current.classList.toggle('collapse')
+		} else {
+			searchBar.current.classList.add('collapse')
+			searchBar.current.value = null
+			setSearchQuery('')
+		}
+	}
+
+	const handleSearchBar = (event) => {
+		setSearchQuery(event.target.value)
+	}
+
+	const renderSearchedContacts = () => {
+		const filteredContacts = contacts.filter((contact) => {
+			return contact.firstName.toLowerCase().includes(searchQuery)
+		})
+		return filteredContacts
 	}
 
 	const handleFirstNameInput = (event) => {
@@ -52,9 +77,9 @@ const App = () => {
 				newContacts[index] = newPerson
 				setContacts(newContacts)
 
-				submitButton.current.innerText = 'Add contact'
-				submitButton.current.classList.remove('btn-dark')
-				submitButton.current.classList.add('btn-danger')
+				formSubmitButton.current.innerText = 'Add contact'
+				formSubmitButton.current.classList.remove('btn-dark')
+				formSubmitButton.current.classList.add('btn-danger')
 				cachedId.current = null
 				setEdit(false)
 				setFirstName('')
@@ -92,9 +117,9 @@ const App = () => {
 		setEdit(true)
 		cachedId.current = id
 
-		submitButton.current.innerText = 'Edit contact'
-		submitButton.current.classList.remove('btn-danger')
-		submitButton.current.classList.add('btn-dark')
+		formSubmitButton.current.innerText = 'Edit contact'
+		formSubmitButton.current.classList.remove('btn-danger')
+		formSubmitButton.current.classList.add('btn-dark')
 	}
 
 	useEffect(() => {
@@ -107,6 +132,13 @@ const App = () => {
 				<section className="container col-12 col-md-7 col-lg-6 float-left">
 					<header>
 						<h1 className="text-white pt-3 pb-5">Contact App</h1>
+
+						<SearchBar
+							handleSearchBar={handleSearchBar}
+							handleSearchSubmit={handleSearchSubmit}
+							searchBar={searchBar}
+							searchQuery={searchQuery}
+						/>
 					</header>
 
 					<article className="pb-5">
@@ -165,7 +197,7 @@ const App = () => {
 
 							<div className="form-group row">
 								<button
-									ref={submitButton}
+									ref={formSubmitButton}
 									type="submit"
 									className="col-12 btn btn-danger"
 								>
@@ -176,7 +208,7 @@ const App = () => {
 					</article>
 
 					<Contacts
-						contacts={contacts}
+						contacts={renderSearchedContacts()}
 						handleDeleteButton={handleDeleteButton}
 						handleEditButton={handleEditButton}
 					/>
