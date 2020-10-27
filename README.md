@@ -2,7 +2,7 @@
 
 Simple CRUD with React and hooks.
 
-![image](https://user-images.githubusercontent.com/12193814/97182717-a44f2a80-177b-11eb-8beb-558c380475a0.png)
+![image](https://user-images.githubusercontent.com/12193814/97295115-a70a5800-182d-11eb-99e8-ed1c4026240a.png)
 
 ## Running the Project
 
