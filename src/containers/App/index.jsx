@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
-import './App.css'
-import meteor from '../resources/meteor.svg'
-import Contacts from '../components/Contacts'
-import SearchBar from '../components/SearchBar'
+import './styles.css'
+import meteor from '../../resources/meteor.svg'
+import Contacts from '../../components/Contacts'
+import SearchBar from '../../components/SearchBar'
 
 const App = () => {
 	const [firstName, setFirstName] = useState('')
