@@ -38,7 +38,7 @@ const App = () => {
 
 	const renderSearchedContacts = () => {
 		const filteredContacts = contacts.filter((contact) => {
-			return contact.firstName.toLowerCase().includes(searchQuery)
+			return contact.firstName.toLowerCase().includes(searchQuery.toLowerCase())
 		})
 		return filteredContacts
 	}
