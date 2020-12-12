@@ -1,13 +1,8 @@
 import React from 'react';
-import './styles.css';
+import './SearchBar.css';
 import PropTypes from 'prop-types';
 
-const SearchBar = ({
-  handleSearchSubmit,
-  handleSearchBar,
-  searchBar,
-  searchQuery,
-}) => (
+const SearchBar = ({ handleSearchSubmit, handleSearchBar, searchBar, searchQuery }) => (
   <form className="search-bar form-inline">
     <input
       className="form-control mr-sm-2 collapse"
@@ -18,11 +13,7 @@ const SearchBar = ({
       onChange={handleSearchBar}
       value={searchQuery}
     />
-    <button
-      className="btn btn-outline-light"
-      type="submit"
-      onClick={handleSearchSubmit}
-    >
+    <button className="btn btn-outline-light" type="submit" onClick={handleSearchSubmit}>
       <i className="fas fa-search" />
     </button>
   </form>
