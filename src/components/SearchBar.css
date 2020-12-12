@@ -1,5 +1,7 @@
 .search-bar {
-	position: absolute;
-	top: 22px;
-	right: 0;
+  position: absolute;
+  top: 7px;
+  right: 15px;
+  /* Overwrite form bootstrap style */
+  flex-flow: row !important;
 }

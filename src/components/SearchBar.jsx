@@ -1,22 +1,23 @@
 import React from 'react';
-import './SearchBar.css';
 import PropTypes from 'prop-types';
+import { Form, Button } from 'react-bootstrap';
+import './SearchBar.css';
 
 const SearchBar = ({ handleSearchSubmit, handleSearchBar, searchBar, searchQuery }) => (
-  <form className="search-bar form-inline">
-    <input
-      className="form-control mr-sm-2 collapse"
+  <Form inline className="search-bar">
+    <Form.Control
       type="search"
       placeholder="Search"
+      className="mr-sm-2 collapse"
       aria-label="Search"
       ref={searchBar}
       onChange={handleSearchBar}
       value={searchQuery}
     />
-    <button className="btn btn-outline-light" type="submit" onClick={handleSearchSubmit}>
+    <Button variant="outline-light" type="submit" onClick={handleSearchSubmit}>
       <i className="fas fa-search" />
-    </button>
-  </form>
+    </Button>
+  </Form>
 );
 
 export default SearchBar;
