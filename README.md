@@ -6,6 +6,10 @@ Simple CRUD with React and hooks.
 
 ![image](https://user-images.githubusercontent.com/12193814/97295115-a70a5800-182d-11eb-99e8-ed1c4026240a.png)
 
+## To-do
+
+- [ ] Refactor component states for better atomicity
+
 ## Running the Project
 
 To get started, fork the repository and then run the following commands:
