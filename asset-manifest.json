@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/contact-app/static/css/main.01d03613.chunk.css",
+    "main.js": "/contact-app/static/js/main.5b85e9e2.chunk.js",
+    "main.js.map": "/contact-app/static/js/main.5b85e9e2.chunk.js.map",
+    "runtime-main.js": "/contact-app/static/js/runtime-main.bd45a2a9.js",
+    "runtime-main.js.map": "/contact-app/static/js/runtime-main.bd45a2a9.js.map",
+    "static/css/2.20aa2d7b.chunk.css": "/contact-app/static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.dfcf9f3f.chunk.js": "/contact-app/static/js/2.dfcf9f3f.chunk.js",
+    "static/js/2.dfcf9f3f.chunk.js.map": "/contact-app/static/js/2.dfcf9f3f.chunk.js.map",
+    "index.html": "/contact-app/index.html",
+    "static/css/2.20aa2d7b.chunk.css.map": "/contact-app/static/css/2.20aa2d7b.chunk.css.map",
+    "static/css/main.01d03613.chunk.css.map": "/contact-app/static/css/main.01d03613.chunk.css.map",
+    "static/js/2.dfcf9f3f.chunk.js.LICENSE.txt": "/contact-app/static/js/2.dfcf9f3f.chunk.js.LICENSE.txt",
+    "static/media/meteor.c063d723.svg": "/contact-app/static/media/meteor.c063d723.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bd45a2a9.js",
+    "static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.dfcf9f3f.chunk.js",
+    "static/css/main.01d03613.chunk.css",
+    "static/js/main.5b85e9e2.chunk.js"
+  ]
+}
