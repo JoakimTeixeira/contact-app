@@ -9,6 +9,8 @@ Simple CRUD with React and hooks.
 ## To-do
 
 - [ ] Refactor component states for better atomicity
+- [ ] Change design
+- [ ] Fix search bar responsivity
 
 ## Running the Project
 
